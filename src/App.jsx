@@ -1,5 +1,7 @@
 import './App.css'
+import { useState } from 'react';
 import SearchBar from './components/SearchBar.jsx';
+import Loader from './components/Loader.jsx';
 //basic app
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -28,6 +30,7 @@ function App() {
     <div className="app">
       <h1>Recipe Finder</h1>
       <SearchBar onSearch={fecthRecipe}/>
+      {loading && <Loader/>}
     </div>
   );
 }
