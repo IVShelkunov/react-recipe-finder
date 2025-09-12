@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react';
 import SearchBar from './components/SearchBar.jsx';
 import Loader from './components/Loader.jsx';
+import RecipeList from './components/RecipeList.jsx';
 //basic app
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -18,7 +19,7 @@ function App() {
       if(!response.ok) {
         throw new Error('Ошибка сети!');
       }
-      const data = response.json();
+      const data = await response.json();
       setRecipes(data.meals);
     } catch(err) {
         setError(err.message);
@@ -27,11 +28,14 @@ function App() {
         }
   }
   return (
-    <div className="app">
-      <h1>Recipe Finder</h1>
-      <SearchBar onSearch={fecthRecipe}/>
-      {loading && <Loader/>}
-    </div>
+      <div className="app">
+        <h1>Recipe Finder</h1>
+        <SearchBar onSearch={fecthRecipe}/>
+        {loading && <Loader/>}
+        {error && <p className="error-message">Ошибка: {error}</p>}
+        <RecipeList recipes={recipes}/>
+      </div>
+    
   );
 }
 
