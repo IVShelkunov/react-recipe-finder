@@ -1,3 +1,4 @@
+import RecipeCard from './RecipeCard.jsx';
 function RecipeList({recipes}) {
 	if(!recipes) {
 		return <div className="recipe-list"><p>Ничего не найдено</p></div>;
