@@ -1,5 +1,5 @@
-
+//Loader.jsx
 function Loader() {
-	return <div>...Загрузка</div>;
+	return <div className="loader">...Loading</div>;
 }
 export default Loader ;
